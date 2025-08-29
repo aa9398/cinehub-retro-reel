@@ -53,20 +53,13 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				}
 			},
-			backgroundImage: {
-				'gradient-retro': 'var(--gradient-retro)',
-				'gradient-neon-pink': 'var(--gradient-neon-pink)',
-				'gradient-neon-blue': 'var(--gradient-neon-blue)',
-				'gradient-neon-green': 'var(--gradient-neon-green)'
-			},
 			boxShadow: {
-				'neon-pink': 'var(--shadow-neon-pink)',
-				'neon-blue': 'var(--shadow-neon-blue)',
-				'neon-green': 'var(--shadow-neon-green)',
-				'vhs': 'var(--shadow-vhs)'
+				'pixel': 'var(--shadow-pixel)',
+				'subtle': 'var(--shadow-subtle)'
 			},
 			fontFamily: {
-				'retro': ['Orbitron', 'monospace']
+				'pixel': ['Press Start 2P', 'monospace'],
+				'sans': ['Inter', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -82,31 +75,20 @@ export default {
 					from: { height: 'var(--radix-accordion-content-height)' },
 					to: { height: '0' }
 				},
-				'neon-glow': {
-					'0%, 100%': { boxShadow: 'var(--shadow-neon-pink)' },
-					'50%': { boxShadow: '0 0 30px hsl(322, 100%, 58%, 0.7), 0 0 60px hsl(322, 100%, 58%, 0.5)' }
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
 				},
-				'retro-flicker': {
-					'0%, 100%': { opacity: '1' },
-					'50%': { opacity: '0.8' }
-				},
-				'vhs-scan': {
-					'0%': { transform: 'translateY(-100%)' },
-					'100%': { transform: 'translateY(100vh)' }
-				},
-				'bounce-glow': {
-					'0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
-					'40%': { transform: 'translateY(-10px)' },
-					'60%': { transform: 'translateY(-5px)' }
+				'pixel-bounce': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-2px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'neon-glow': 'neon-glow 2s ease-in-out infinite',
-				'retro-flicker': 'retro-flicker 3s ease-in-out infinite',
-				'vhs-scan': 'vhs-scan 2s linear infinite',
-				'bounce-glow': 'bounce-glow 2s infinite'
+				'fade-in': 'fade-in 0.3s ease-out',
+				'pixel-bounce': 'pixel-bounce 0.6s ease-in-out infinite'
 			}
 		}
 	},

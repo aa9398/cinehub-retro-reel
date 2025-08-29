@@ -16,42 +16,60 @@ export type Database = {
     Tables: {
       movies: {
         Row: {
+          awards: string | null
+          cast_members: string[] | null
+          country: string | null
           created_at: string
           description: string | null
+          director: string | null
           genre: string | null
           id: string
+          imdb_rating: number | null
           is_premium: boolean | null
           poster_url: string | null
           price: number | null
           release_year: number | null
+          runtime_minutes: number | null
           streaming_platforms: string[] | null
           title: string
           trailer_link: string | null
           updated_at: string
         }
         Insert: {
+          awards?: string | null
+          cast_members?: string[] | null
+          country?: string | null
           created_at?: string
           description?: string | null
+          director?: string | null
           genre?: string | null
           id?: string
+          imdb_rating?: number | null
           is_premium?: boolean | null
           poster_url?: string | null
           price?: number | null
           release_year?: number | null
+          runtime_minutes?: number | null
           streaming_platforms?: string[] | null
           title: string
           trailer_link?: string | null
           updated_at?: string
         }
         Update: {
+          awards?: string | null
+          cast_members?: string[] | null
+          country?: string | null
           created_at?: string
           description?: string | null
+          director?: string | null
           genre?: string | null
           id?: string
+          imdb_rating?: number | null
           is_premium?: boolean | null
           poster_url?: string | null
           price?: number | null
           release_year?: number | null
+          runtime_minutes?: number | null
           streaming_platforms?: string[] | null
           title?: string
           trailer_link?: string | null

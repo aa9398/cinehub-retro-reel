@@ -1,69 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* CineHub Retro 80s Design System */
+/* CineHub Nothing UI × Retro Design System */
 @layer base {
   :root {
-    /* Retro 80s Dark Background with Purple Gradient */
-    --background: 240 10% 3.9%;
-    --foreground: 322 100% 85%;
+    /* Monochrome Base Colors */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 15%;
 
-    /* Neon Card Colors */
-    --card: 240 10% 8%;
-    --card-foreground: 322 100% 85%;
+    /* Clean Card Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
 
-    --popover: 240 10% 8%;
-    --popover-foreground: 322 100% 85%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
 
-    /* Neon Pink Primary */
-    --primary: 322 100% 58%;
-    --primary-foreground: 240 10% 3.9%;
+    /* Subtle Muted Retro Blue Primary */
+    --primary: 211 25% 65%;
+    --primary-foreground: 0 0% 98%;
 
-    /* Neon Blue Secondary */
-    --secondary: 193 100% 50%;
-    --secondary-foreground: 240 10% 3.9%;
+    /* Dusty Red Secondary */
+    --secondary: 350 20% 70%;
+    --secondary-foreground: 0 0% 15%;
 
-    /* Muted Purple */
-    --muted: 260 15% 20%;
-    --muted-foreground: 322 30% 70%;
+    /* Muted Gray */
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 45%;
 
-    /* Neon Green Accent */
-    --accent: 120 100% 50%;
-    --accent-foreground: 240 10% 3.9%;
+    /* Olive Green Accent */
+    --accent: 75 25% 65%;
+    --accent-foreground: 0 0% 15%;
 
-    /* Destructive Red */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive */
+    --destructive: 0 65% 60%;
+    --destructive-foreground: 0 0% 98%;
 
     /* Borders and Inputs */
-    --border: 260 30% 18%;
-    --input: 260 30% 18%;
-    --ring: 322 100% 58%;
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: 211 25% 65%;
 
-    --radius: 0.75rem;
+    --radius: 0.25rem;
 
-    /* Retro Gradients */
-    --gradient-retro: linear-gradient(135deg, hsl(240, 10%, 3.9%) 0%, hsl(260, 20%, 8%) 50%, hsl(280, 30%, 10%) 100%);
-    --gradient-neon-pink: linear-gradient(135deg, hsl(322, 100%, 58%) 0%, hsl(340, 100%, 68%) 100%);
-    --gradient-neon-blue: linear-gradient(135deg, hsl(193, 100%, 50%) 0%, hsl(213, 100%, 60%) 100%);
-    --gradient-neon-green: linear-gradient(135deg, hsl(120, 100%, 50%) 0%, hsl(140, 100%, 60%) 100%);
+    /* Pixel-inspired Shadows */
+    --shadow-pixel: 2px 2px 0px hsl(0 0% 85%), 4px 4px 0px hsl(0 0% 80%);
+    --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.1), 0 1px 2px hsl(0 0% 0% / 0.06);
     
-    /* Neon Shadows */
-    --shadow-neon-pink: 0 0 20px hsl(322, 100%, 58%, 0.5), 0 0 40px hsl(322, 100%, 58%, 0.3);
-    --shadow-neon-blue: 0 0 20px hsl(193, 100%, 50%, 0.5), 0 0 40px hsl(193, 100%, 50%, 0.3);
-    --shadow-neon-green: 0 0 20px hsl(120, 100%, 50%, 0.5), 0 0 40px hsl(120, 100%, 50%, 0.3);
-    --shadow-vhs: 0 8px 32px hsl(322, 100%, 58%, 0.2), inset 0 1px 0 hsl(322, 100%, 68%, 0.1);
-    
-    /* Transitions */
-    --transition-neon: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Clean Transitions */
+    --transition-pixel: all 0.15s cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  /* Dark mode */
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 211 35% 75%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 350 25% 75%;
+    --secondary-foreground: 0 0% 8%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 75 30% 70%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 211 35% 75%;
+
+    --shadow-pixel: 2px 2px 0px hsl(0 0% 20%), 4px 4px 0px hsl(0 0% 15%);
+    --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.3), 0 1px 2px hsl(0 0% 0% / 0.2);
   }
 
   body {
-    @apply bg-background text-foreground font-['Orbitron'];
-    background: var(--gradient-retro);
+    @apply bg-background text-foreground font-sans;
     min-height: 100vh;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 

@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Heart, Play, DollarSign, Check } from 'lucide-react';
+import { Heart, Play, IndianRupee, Check, Star, Info } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { VideoModal } from './VideoModal';
+import { MovieDetailModal } from './MovieDetailModal';
 
 interface Movie {
   id: string;
@@ -19,6 +20,12 @@ interface Movie {
   streaming_platforms: string[];
   price: number;
   is_premium: boolean;
+  imdb_rating?: number;
+  runtime_minutes?: number;
+  director?: string;
+  cast_members?: string[];
+  awards?: string;
+  country?: string;
 }
 
 interface MovieCardProps {
@@ -36,6 +43,7 @@ export function MovieCard({
 }: MovieCardProps) {
   const [loading, setLoading] = useState(false);
   const [showTrailer, setShowTrailer] = useState(false);
+  const [showDetail, setShowDetail] = useState(false);
   const { user } = useAuth();
   const { toast } = useToast();
 
@@ -44,7 +52,8 @@ export function MovieCard({
     'Prime Video': '🅿️',
     'Disney+': '🇩',
     'Hulu': '🇭',
-    'HBO Max': '🇭'
+    'HBO Max': '🇭',
+    'Paramount+': '🇵'
   };
 
   const handleWatchlistToggle = async () => {
@@ -110,7 +119,6 @@ export function MovieCard({
       return;
     }
     
-    // TODO: Implement Stripe checkout
     toast({
       title: "Coming Soon",
       description: "Stripe integration will be added next!",
@@ -119,72 +127,97 @@ export function MovieCard({
 
   return (
     <>
-      <Card className="group relative overflow-hidden border-primary/20 bg-card/80 backdrop-blur-sm hover:border-primary/40 transition-all duration-300 hover:shadow-vhs">
-        {/* VHS-style design elements */}
-        <div className="absolute top-2 left-2 w-4 h-2 bg-secondary rounded-full opacity-60" />
-        <div className="absolute top-2 right-2 w-4 h-2 bg-accent rounded-full opacity-60" />
+      <Card className="group relative overflow-hidden border border-border bg-card shadow-pixel hover:shadow-subtle transition-[var(--transition-pixel)] cursor-pointer">
         
-        <div className="relative">
+        <div className="relative" onClick={() => setShowDetail(true)}>
           <img
             src={movie.poster_url}
             alt={movie.title}
-            className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-64 object-cover group-hover:scale-[1.02] transition-transform duration-300"
           />
           {movie.is_premium && (
-            <Badge className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-gradient-neon-pink shadow-neon-pink font-retro">
+            <Badge className="absolute top-2 left-2 bg-secondary text-secondary-foreground font-pixel text-xs">
               PREMIUM
             </Badge>
           )}
+          {movie.imdb_rating && (
+            <div className="absolute top-2 right-2 flex items-center gap-1 bg-black/70 px-2 py-1 rounded">
+              <Star className="w-3 h-3 fill-accent text-accent" />
+              <span className="text-white text-xs font-medium">{movie.imdb_rating}</span>
+            </div>
+          )}
         </div>
 
-        <CardContent className="p-4">
-          <h3 className="font-retro font-bold text-lg text-foreground mb-1 line-clamp-1">
-            {movie.title}
-          </h3>
-          <p className="text-muted-foreground text-sm mb-2">
-            {movie.release_year} • {movie.genre}
-          </p>
-          <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
-            {movie.description}
-          </p>
+        <CardContent className="p-4 space-y-3">
+          <div className="space-y-2">
+            <h3 className="font-pixel text-xs text-foreground leading-relaxed line-clamp-2 min-h-[2rem]">
+              {movie.title.toUpperCase()}
+            </h3>
+            <p className="text-muted-foreground text-xs">
+              {movie.release_year} • {movie.genre}
+            </p>
+          </div>
           
           {/* Streaming Platforms */}
-          <div className="flex flex-wrap gap-1 mb-3">
-            {movie.streaming_platforms.map((platform) => (
+          <div className="flex flex-wrap gap-1">
+            {movie.streaming_platforms.slice(0, 2).map((platform) => (
               <Badge 
                 key={platform} 
-                variant="secondary" 
-                className="text-xs font-retro bg-secondary/20 text-secondary border-secondary/40"
+                variant="outline" 
+                className="text-xs bg-secondary/10 text-secondary border-secondary/20"
               >
                 {platformIcons[platform] || '📺'} {platform}
               </Badge>
             ))}
+            {movie.streaming_platforms.length > 2 && (
+              <Badge variant="outline" className="text-xs bg-muted/10 text-muted-foreground border-border">
+                +{movie.streaming_platforms.length - 2}
+              </Badge>
+            )}
           </div>
         </CardContent>
 
-        <CardFooter className="p-4 pt-0 flex flex-col gap-2">
+        <CardFooter className="p-4 pt-0 space-y-3">
           <div className="flex gap-2 w-full">
             <Button
               size="sm"
               variant="outline"
-              onClick={() => setShowTrailer(true)}
-              className="flex-1 font-retro border-primary/40 text-primary hover:bg-primary/20"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowTrailer(true);
+              }}
+              className="flex-1 font-pixel text-xs border border-primary/30 hover:border-primary/50 hover:bg-primary/5 transition-[var(--transition-pixel)]"
             >
-              <Play className="w-4 h-4 mr-1" />
+              <Play className="w-3 h-3 mr-1" />
               TRAILER
+            </Button>
+            
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowDetail(true);
+              }}
+              className="font-pixel text-xs hover:bg-accent/10 text-muted-foreground hover:text-accent transition-[var(--transition-pixel)]"
+            >
+              <Info className="w-3 h-3" />
             </Button>
             
             {user && (
               <Button
                 size="sm"
                 variant="ghost"
-                onClick={handleWatchlistToggle}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleWatchlistToggle();
+                }}
                 disabled={loading}
-                className={`font-retro hover:bg-accent/20 ${
-                  inWatchlist ? 'text-accent' : 'text-muted-foreground'
+                className={`font-pixel text-xs hover:bg-accent/10 transition-[var(--transition-pixel)] ${
+                  inWatchlist ? 'text-accent' : 'text-muted-foreground hover:text-accent'
                 }`}
               >
-                <Heart className={`w-4 h-4 ${inWatchlist ? 'fill-current' : ''}`} />
+                <Heart className={`w-3 h-3 ${inWatchlist ? 'fill-current' : ''}`} />
               </Button>
             )}
           </div>
@@ -192,23 +225,26 @@ export function MovieCard({
           {movie.is_premium && movie.price > 0 && (
             <Button
               size="sm"
-              onClick={handlePurchase}
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePurchase();
+              }}
               disabled={isPurchased}
-              className={`w-full font-retro ${
+              className={`w-full font-pixel text-xs transition-[var(--transition-pixel)] ${
                 isPurchased
-                  ? 'bg-accent text-accent-foreground'
-                  : 'bg-gradient-neon-blue shadow-neon-blue hover:shadow-neon-green'
+                  ? 'bg-accent text-accent-foreground hover:bg-accent/90'
+                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
               }`}
             >
               {isPurchased ? (
                 <>
-                  <Check className="w-4 h-4 mr-1" />
+                  <Check className="w-3 h-3 mr-1" />
                   OWNED
                 </>
               ) : (
                 <>
-                  <DollarSign className="w-4 h-4 mr-1" />
-                  RENT ${movie.price}
+                  <IndianRupee className="w-3 h-3 mr-1" />
+                  RENT ₹{movie.price}
                 </>
               )}
             </Button>
@@ -221,6 +257,15 @@ export function MovieCard({
         onClose={() => setShowTrailer(false)}
         videoUrl={movie.trailer_link}
         title={movie.title}
+      />
+
+      <MovieDetailModal
+        movie={movie}
+        isOpen={showDetail}
+        onClose={() => setShowDetail(false)}
+        inWatchlist={inWatchlist}
+        isPurchased={isPurchased}
+        onWatchlistUpdate={onWatchlistUpdate}
       />
     </>
   );

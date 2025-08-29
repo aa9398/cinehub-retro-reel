@@ -17,6 +17,12 @@ interface Movie {
   streaming_platforms: string[];
   price: number;
   is_premium: boolean;
+  imdb_rating?: number;
+  runtime_minutes?: number;
+  director?: string;
+  cast_members?: string[];
+  awards?: string;
+  country?: string;
 }
 
 const Index = () => {
@@ -103,7 +109,7 @@ const Index = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="font-retro text-primary text-xl animate-pulse">LOADING CATALOG...</div>
+        <div className="font-pixel text-xs text-primary animate-pixel-bounce">LOADING CATALOG...</div>
       </div>
     );
   }
@@ -111,13 +117,14 @@ const Index = () => {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <div className="text-center py-12">
-        <h1 className="font-retro text-5xl font-black text-primary mb-4 animate-neon-glow">
-          MOVIE CATALOG
+      <div className="text-center py-12 space-y-4">
+        <h1 className="font-pixel text-2xl md:text-4xl font-bold text-primary leading-relaxed">
+          CINEHUB
         </h1>
-        <p className="font-retro text-muted-foreground text-lg max-w-2xl mx-auto">
-          Discover the best retro and modern films. Watch trailers, add to watchlist, 
-          and rent premium content.
+        <div className="w-16 h-1 bg-primary mx-auto" />
+        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
+          Discover the best films from around the world. Watch trailers, add to watchlist, 
+          and rent premium content in the classic retro style.
         </p>
       </div>
 
@@ -129,15 +136,15 @@ const Index = () => {
             placeholder="Search movies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 font-retro border-primary/40 bg-background/50"
+            className="pl-10 border-border bg-background shadow-subtle"
           />
         </div>
         <Select value={genreFilter} onValueChange={setGenreFilter}>
-          <SelectTrigger className="md:w-48 font-retro border-primary/40 bg-background/50">
+          <SelectTrigger className="md:w-48 border-border bg-background shadow-subtle">
             <Filter className="h-4 w-4 mr-2" />
             <SelectValue placeholder="Filter by genre" />
           </SelectTrigger>
-          <SelectContent className="font-retro">
+          <SelectContent>
             <SelectItem value="all">All Genres</SelectItem>
             {genres.map((genre) => (
               <SelectItem key={genre} value={genre.toLowerCase()}>
@@ -151,7 +158,7 @@ const Index = () => {
       {/* Movies Grid */}
       {filteredMovies.length === 0 ? (
         <div className="text-center py-12">
-          <div className="font-retro text-muted-foreground text-xl">
+          <div className="font-pixel text-xs text-muted-foreground">
             NO MOVIES FOUND
           </div>
         </div>
