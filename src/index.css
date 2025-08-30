@@ -3,88 +3,91 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CineHub Blackish × Purple Pixel Design System */
+/* CineHub Ultra Black × Purple Pixel Design System */
 @layer base {
   :root {
-    /* Blackish Base Colors */
-    --background: 0 0% 8%;
-    --foreground: 280 20% 85%;
+    /* Ultra Black Base Colors */
+    --background: 0 0% 3%;
+    --foreground: 280 30% 90%;
 
-    /* Dark Card Colors */
-    --card: 0 0% 12%;
-    --card-foreground: 280 15% 90%;
+    /* Ultra Dark Card Colors */
+    --card: 0 0% 6%;
+    --card-foreground: 280 25% 95%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 280 15% 90%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 280 25% 95%;
 
-    /* Purple Faded Primary */
-    --primary: 280 40% 60%;
-    --primary-foreground: 0 0% 5%;
+    /* Enhanced Purple Primary */
+    --primary: 280 60% 65%;
+    --primary-foreground: 0 0% 3%;
 
-    /* Magenta Secondary */
-    --secondary: 300 35% 55%;
+    /* Electric Magenta Secondary */
+    --secondary: 300 55% 60%;
     --secondary-foreground: 0 0% 95%;
 
-    /* Dark Muted */
-    --muted: 0 0% 18%;
-    --muted-foreground: 280 10% 65%;
+    /* Ultra Dark Muted */
+    --muted: 0 0% 10%;
+    --muted-foreground: 280 20% 70%;
 
-    /* Violet Accent */
-    --accent: 270 50% 70%;
-    --accent-foreground: 0 0% 5%;
+    /* Bright Violet Accent */
+    --accent: 270 70% 75%;
+    --accent-foreground: 0 0% 3%;
 
     /* Destructive Red */
-    --destructive: 0 65% 55%;
+    --destructive: 0 80% 60%;
     --destructive-foreground: 0 0% 95%;
 
-    /* Dark Borders and Inputs */
-    --border: 280 15% 25%;
-    --input: 0 0% 15%;
-    --ring: 280 40% 60%;
+    /* Ultra Dark Borders and Inputs */
+    --border: 280 30% 20%;
+    --input: 0 0% 8%;
+    --ring: 280 60% 65%;
 
     --radius: 0rem;
 
-    /* Enhanced Pixel Shadows */
-    --shadow-pixel: 3px 3px 0px hsl(280 30% 20%), 6px 6px 0px hsl(280 25% 15%);
-    --shadow-heavy: 4px 4px 0px hsl(280 30% 20%), 8px 8px 0px hsl(280 25% 15%), 12px 12px 0px hsl(280 20% 10%);
-    --shadow-glow: 0 0 20px hsl(280 50% 60% / 0.3), 0 0 40px hsl(280 50% 60% / 0.1);
-    --shadow-subtle: 2px 2px 0px hsl(280 20% 20%);
+    /* Ultra Pixelated Shadows */
+    --shadow-pixel: 4px 4px 0px hsl(280 40% 15%), 8px 8px 0px hsl(280 35% 10%);
+    --shadow-heavy: 6px 6px 0px hsl(280 40% 15%), 12px 12px 0px hsl(280 35% 10%), 18px 18px 0px hsl(280 30% 5%);
+    --shadow-glow: 0 0 30px hsl(280 60% 65% / 0.5), 0 0 60px hsl(280 60% 65% / 0.2);
+    --shadow-subtle: 3px 3px 0px hsl(280 25% 15%);
+    --shadow-neon: 0 0 10px hsl(280 60% 65%), 0 0 20px hsl(280 60% 65%), 0 0 30px hsl(280 60% 65%);
     
-    /* Pixelated Transitions */
-    --transition-pixel: all 0.1s steps(3);
-    --transition-smooth: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Ultra Pixelated Transitions */
+    --transition-pixel: all 0.05s steps(2);
+    --transition-smooth: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-    /* Pixel Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(280 40% 60%), hsl(300 35% 55%));
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 12%), hsl(0 0% 8%));
-    --gradient-purple: linear-gradient(45deg, hsl(280 50% 30%), hsl(300 40% 25%));
+    /* Enhanced Pixel Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(280 60% 65%), hsl(300 55% 60%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 6%), hsl(0 0% 3%));
+    --gradient-purple: linear-gradient(45deg, hsl(280 70% 25%), hsl(300 60% 20%));
+    --gradient-retro: linear-gradient(135deg, hsl(0 0% 3%) 0%, hsl(280 20% 8%) 50%, hsl(0 0% 3%) 100%);
   }
 
-  /* Light mode override (keeping dark theme) */
+  /* Light mode override (keeping ultra dark theme) */
   .light {
-    --background: 0 0% 8%;
-    --foreground: 280 20% 85%;
-    --card: 0 0% 12%;
-    --card-foreground: 280 15% 90%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 280 15% 90%;
-    --primary: 280 40% 60%;
-    --primary-foreground: 0 0% 5%;
-    --secondary: 300 35% 55%;
+    --background: 0 0% 3%;
+    --foreground: 280 30% 90%;
+    --card: 0 0% 6%;
+    --card-foreground: 280 25% 95%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 280 25% 95%;
+    --primary: 280 60% 65%;
+    --primary-foreground: 0 0% 3%;
+    --secondary: 300 55% 60%;
     --secondary-foreground: 0 0% 95%;
-    --muted: 0 0% 18%;
-    --muted-foreground: 280 10% 65%;
-    --accent: 270 50% 70%;
-    --accent-foreground: 0 0% 5%;
-    --destructive: 0 65% 55%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 280 20% 70%;
+    --accent: 270 70% 75%;
+    --accent-foreground: 0 0% 3%;
+    --destructive: 0 80% 60%;
     --destructive-foreground: 0 0% 95%;
-    --border: 280 15% 25%;
-    --input: 0 0% 15%;
-    --ring: 280 40% 60%;
-    --shadow-pixel: 3px 3px 0px hsl(280 30% 20%), 6px 6px 0px hsl(280 25% 15%);
-    --shadow-heavy: 4px 4px 0px hsl(280 30% 20%), 8px 8px 0px hsl(280 25% 15%), 12px 12px 0px hsl(280 20% 10%);
-    --shadow-glow: 0 0 20px hsl(280 50% 60% / 0.3), 0 0 40px hsl(280 50% 60% / 0.1);
-    --shadow-subtle: 2px 2px 0px hsl(280 20% 20%);
+    --border: 280 30% 20%;
+    --input: 0 0% 8%;
+    --ring: 280 60% 65%;
+    --shadow-pixel: 4px 4px 0px hsl(280 40% 15%), 8px 8px 0px hsl(280 35% 10%);
+    --shadow-heavy: 6px 6px 0px hsl(280 40% 15%), 12px 12px 0px hsl(280 35% 10%), 18px 18px 0px hsl(280 30% 5%);
+    --shadow-glow: 0 0 30px hsl(280 60% 65% / 0.5), 0 0 60px hsl(280 60% 65% / 0.2);
+    --shadow-subtle: 3px 3px 0px hsl(280 25% 15%);
+    --shadow-neon: 0 0 10px hsl(280 60% 65%), 0 0 20px hsl(280 60% 65%), 0 0 30px hsl(280 60% 65%);
   }
 
   body {
@@ -121,17 +124,24 @@
 }
 
 @layer components {
-  /* Pixel Button Variants */
+  /* Ultra Pixel Components */
   .pixel-button {
-    @apply font-pixel text-xs bg-primary text-primary-foreground border-0 shadow-pixel hover:shadow-heavy transition-[var(--transition-pixel)] hover:translate-x-[1px] hover:translate-y-[1px];
+    @apply font-pixel text-xs bg-primary text-primary-foreground border-0 shadow-pixel hover:shadow-heavy transition-[var(--transition-pixel)] hover:translate-x-[2px] hover:translate-y-[2px];
   }
   
   .pixel-card {
-    @apply bg-card border-2 border-border shadow-pixel hover:shadow-glow transition-[var(--transition-smooth)];
+    @apply bg-card border-4 border-border shadow-pixel hover:shadow-neon transition-[var(--transition-smooth)];
   }
   
   .pixel-badge {
-    @apply font-pixel text-[10px] bg-secondary text-secondary-foreground border border-border shadow-subtle;
+    @apply font-pixel text-[10px] bg-secondary text-secondary-foreground border-2 border-border shadow-pixel;
+  }
+
+  .ultra-pixel-card {
+    @apply bg-card border-8 border-border shadow-heavy hover:shadow-neon transition-[var(--transition-pixel)];
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
   }
   
   .retro-scanlines::before {
@@ -143,9 +153,47 @@
     height: 100%;
     background: linear-gradient(
       transparent 50%,
-      hsl(280 50% 60% / 0.1) 50%
+      hsl(280 60% 65% / 0.15) 50%
     );
-    background-size: 100% 4px;
+    background-size: 100% 3px;
     pointer-events: none;
+  }
+
+  .pixel-grid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(hsl(280 30% 20% / 0.2) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(280 30% 20% / 0.2) 1px, transparent 1px);
+    background-size: 12px 12px;
+    pointer-events: none;
+  }
+
+  .neon-glow {
+    text-shadow: var(--shadow-neon);
+  }
+
+  .bg-gradient-retro {
+    background: var(--gradient-retro);
+  }
+
+  .font-retro {
+    @apply font-pixel;
+  }
+
+  .animate-neon-glow {
+    animation: pixel-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-retro-flicker {
+    animation: glitch 3s ease-in-out infinite;
+  }
+
+  .shadow-vhs {
+    box-shadow: var(--shadow-heavy);
   }
 }

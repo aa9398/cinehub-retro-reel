@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Watchlist from "./pages/Watchlist";
 import Dashboard from "./pages/Dashboard";
+import Top100Movies from "./pages/Top100Movies";
+import Top100Series from "./pages/Top100Series";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
               <Route path="/auth" element={<Auth />} />
               <Route path="/watchlist" element={<Watchlist />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/top-100-movies" element={<Top100Movies />} />
+              <Route path="/top-100-series" element={<Top100Series />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

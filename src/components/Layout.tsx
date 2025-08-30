@@ -13,9 +13,9 @@ export function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-gradient-retro">
-      {/* Animated Neon Logo Header */}
-      <header className="sticky top-0 z-50 border-b border-primary/20 bg-background/80 backdrop-blur-sm">
+    <div className="min-h-screen bg-gradient-retro pixel-grid">
+      {/* Ultra Pixel Header */}
+      <header className="sticky top-0 z-50 border-b-4 border-border bg-card/90 backdrop-blur-sm shadow-pixel">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
@@ -28,29 +28,45 @@ export function Layout({ children }: LayoutProps) {
             <nav className="hidden md:flex items-center space-x-6">
               <Link 
                 to="/" 
-                className={`font-retro font-medium transition-colors hover:text-primary ${
-                  location.pathname === '/' ? 'text-primary' : 'text-foreground'
+                className={`font-pixel text-xs font-medium transition-colors hover:text-primary hover:shadow-glow ${
+                  location.pathname === '/' ? 'text-primary neon-glow' : 'text-foreground'
                 }`}
               >
-                CATALOG
+                ◆ CATALOG ◆
+              </Link>
+              <Link 
+                to="/top-100-movies" 
+                className={`font-pixel text-xs font-medium transition-colors hover:text-primary hover:shadow-glow ${
+                  location.pathname === '/top-100-movies' ? 'text-primary neon-glow' : 'text-foreground'
+                }`}
+              >
+                🏆 TOP MOVIES
+              </Link>
+              <Link 
+                to="/top-100-series" 
+                className={`font-pixel text-xs font-medium transition-colors hover:text-primary hover:shadow-glow ${
+                  location.pathname === '/top-100-series' ? 'text-primary neon-glow' : 'text-foreground'
+                }`}
+              >
+                📺 TOP SERIES
               </Link>
               {user && (
                 <>
                   <Link 
                     to="/watchlist" 
-                    className={`font-retro font-medium transition-colors hover:text-primary ${
-                      location.pathname === '/watchlist' ? 'text-primary' : 'text-foreground'
+                    className={`font-pixel text-xs font-medium transition-colors hover:text-primary hover:shadow-glow ${
+                      location.pathname === '/watchlist' ? 'text-primary neon-glow' : 'text-foreground'
                     }`}
                   >
-                    WATCHLIST
+                    ♦ WATCHLIST ♦
                   </Link>
                   <Link 
                     to="/dashboard" 
-                    className={`font-retro font-medium transition-colors hover:text-primary ${
-                      location.pathname === '/dashboard' ? 'text-primary' : 'text-foreground'
+                    className={`font-pixel text-xs font-medium transition-colors hover:text-primary hover:shadow-glow ${
+                      location.pathname === '/dashboard' ? 'text-primary neon-glow' : 'text-foreground'
                     }`}
                   >
-                    DASHBOARD
+                    ★ DASHBOARD ★
                   </Link>
                 </>
               )}
@@ -62,7 +78,7 @@ export function Layout({ children }: LayoutProps) {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="font-retro text-primary hover:bg-primary/20"
+                    className="font-pixel text-xs text-primary hover:bg-primary/20 hover:shadow-glow transition-[var(--transition-pixel)]"
                     asChild
                   >
                     <Link to="/dashboard">
@@ -73,7 +89,7 @@ export function Layout({ children }: LayoutProps) {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="font-retro border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                    className="font-pixel text-xs border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground shadow-pixel hover:shadow-glow transition-[var(--transition-pixel)]"
                     onClick={signOut}
                   >
                     LOGOUT
@@ -83,7 +99,7 @@ export function Layout({ children }: LayoutProps) {
                 <Button
                   variant="default"
                   size="sm"
-                  className="font-retro bg-gradient-neon-pink shadow-neon-pink hover:shadow-neon-blue"
+                  className="pixel-button shadow-glow hover:shadow-neon"
                   asChild
                 >
                   <Link to="/auth">LOGIN</Link>
@@ -99,12 +115,12 @@ export function Layout({ children }: LayoutProps) {
         {children}
       </main>
 
-      {/* Retro Footer */}
-      <footer className="border-t border-primary/20 bg-background/50 backdrop-blur-sm mt-20">
+      {/* Ultra Pixel Footer */}
+      <footer className="border-t-4 border-border bg-card/50 backdrop-blur-sm mt-20 shadow-pixel">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">
-            <p className="font-retro text-muted-foreground">
-              © 2024 CINEHUB - Your Retro Movie Experience
+            <p className="font-pixel text-xs text-muted-foreground">
+              ◆ © 2024 CINEHUB - ULTRA PIXEL MOVIE ARCHIVE ◆
             </p>
           </div>
         </div>

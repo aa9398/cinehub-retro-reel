@@ -49,7 +49,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-retro flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-retro pixel-grid flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Animated Logo */}
         <div className="text-center mb-8">
@@ -61,7 +61,7 @@ export default function Auth() {
           </Link>
         </div>
 
-        <Card className="border-primary/20 bg-card/80 backdrop-blur-sm shadow-vhs">
+        <Card className="ultra-pixel-card bg-card/90 backdrop-blur-sm retro-scanlines">
           <CardHeader className="text-center">
             <CardTitle className="font-retro text-2xl text-primary">
               {isSignUp ? 'JOIN THE GRID' : 'ENTER THE GRID'}
@@ -85,7 +85,7 @@ export default function Auth() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="font-retro border-primary/40 bg-background/50 focus:border-primary focus:ring-primary"
+                  className="font-pixel text-xs border-2 border-border bg-input focus:border-primary focus:ring-primary shadow-pixel"
                   placeholder="your.email@domain.com"
                 />
               </div>
@@ -99,14 +99,14 @@ export default function Auth() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="font-retro border-primary/40 bg-background/50 focus:border-primary focus:ring-primary"
+                  className="font-pixel text-xs border-2 border-border bg-input focus:border-primary focus:ring-primary shadow-pixel"
                   placeholder="••••••••"
                 />
               </div>
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full font-retro font-bold bg-gradient-neon-pink shadow-neon-pink hover:shadow-neon-blue transition-all duration-300"
+                className="w-full pixel-button shadow-glow hover:shadow-neon"
               >
                 {loading ? 'PROCESSING...' : isSignUp ? 'CREATE ACCOUNT' : 'LOGIN'}
               </Button>
@@ -116,7 +116,7 @@ export default function Auth() {
               <Button
                 type="button"
                 variant="ghost"
-                className="font-retro text-primary hover:text-primary/80"
+                className="font-pixel text-xs text-primary hover:text-primary/80 hover:shadow-glow transition-[var(--transition-pixel)]"
                 onClick={() => setIsSignUp(!isSignUp)}
               >
                 {isSignUp 
