@@ -55,6 +55,8 @@ export default {
 			},
 			boxShadow: {
 				'pixel': 'var(--shadow-pixel)',
+				'heavy': 'var(--shadow-heavy)',
+				'glow': 'var(--shadow-glow)',
 				'subtle': 'var(--shadow-subtle)'
 			},
 			fontFamily: {
@@ -81,14 +83,33 @@ export default {
 				},
 				'pixel-bounce': {
 					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-2px)' }
+					'50%': { transform: 'translateY(-3px)' }
+				},
+				'pixel-pulse': {
+					'0%, 100%': { boxShadow: 'var(--shadow-pixel)' },
+					'50%': { boxShadow: 'var(--shadow-glow)' }
+				},
+				'glitch': {
+					'0%, 100%': { transform: 'translate(0)' },
+					'10%': { transform: 'translate(-2px, 1px)' },
+					'20%': { transform: 'translate(2px, -1px)' },
+					'30%': { transform: 'translate(-1px, 2px)' },
+					'40%': { transform: 'translate(1px, -1px)' },
+					'50%': { transform: 'translate(0)' }
+				},
+				'scan-line': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100vw)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
-				'pixel-bounce': 'pixel-bounce 0.6s ease-in-out infinite'
+				'pixel-bounce': 'pixel-bounce 0.8s ease-in-out infinite',
+				'pixel-pulse': 'pixel-pulse 2s ease-in-out infinite',
+				'glitch': 'glitch 0.3s ease-in-out',
+				'scan-line': 'scan-line 2s linear infinite'
 			}
 		}
 	},

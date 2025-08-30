@@ -109,7 +109,7 @@ const Index = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="font-pixel text-xs text-primary animate-pixel-bounce">LOADING CATALOG...</div>
+        <div className="font-pixel text-xs text-primary animate-pixel-bounce shadow-glow">⚡ LOADING CATALOG...</div>
       </div>
     );
   }
@@ -117,14 +117,21 @@ const Index = () => {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <div className="text-center py-12 space-y-4">
-        <h1 className="font-pixel text-2xl md:text-4xl font-bold text-primary leading-relaxed">
-          CINEHUB
+      <div className="text-center py-12 space-y-4 relative">
+        <h1 className="font-pixel text-2xl md:text-4xl font-bold text-primary leading-relaxed animate-pixel-pulse shadow-glow">
+          ◆ CINEHUB ◆
         </h1>
-        <div className="w-16 h-1 bg-primary mx-auto" />
+        <div className="w-24 h-2 bg-primary mx-auto shadow-pixel" />
+        <div className="flex justify-center items-center gap-2 text-accent font-pixel text-xs">
+          <span>━━━</span>
+          <span>♦</span> 
+          <span>RETRO MOVIE ARCHIVE</span>
+          <span>♦</span>
+          <span>━━━</span>
+        </div>
         <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
           Discover the best films from around the world. Watch trailers, add to watchlist, 
-          and rent premium content in the classic retro style.
+          and rent premium content in the classic pixelated style.
         </p>
       </div>
 
@@ -136,11 +143,11 @@ const Index = () => {
             placeholder="Search movies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 border-border bg-background shadow-subtle"
+            className="pl-10 border-2 border-border bg-input shadow-pixel hover:shadow-glow transition-[var(--transition-smooth)] font-pixel text-xs"
           />
         </div>
         <Select value={genreFilter} onValueChange={setGenreFilter}>
-          <SelectTrigger className="md:w-48 border-border bg-background shadow-subtle">
+          <SelectTrigger className="md:w-48 border-2 border-border bg-input shadow-pixel hover:shadow-glow transition-[var(--transition-smooth)] font-pixel text-xs">
             <Filter className="h-4 w-4 mr-2" />
             <SelectValue placeholder="Filter by genre" />
           </SelectTrigger>
@@ -158,8 +165,8 @@ const Index = () => {
       {/* Movies Grid */}
       {filteredMovies.length === 0 ? (
         <div className="text-center py-12">
-          <div className="font-pixel text-xs text-muted-foreground">
-            NO MOVIES FOUND
+          <div className="font-pixel text-xs text-muted-foreground shadow-pixel">
+            ⚠ NO MOVIES FOUND ⚠
           </div>
         </div>
       ) : (

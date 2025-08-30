@@ -127,7 +127,7 @@ export function MovieCard({
 
   return (
     <>
-      <Card className="group relative overflow-hidden border border-border bg-card shadow-pixel hover:shadow-subtle transition-[var(--transition-pixel)] cursor-pointer">
+      <Card className="group relative overflow-hidden pixel-card hover:shadow-glow transition-[var(--transition-smooth)] cursor-pointer retro-scanlines">
         
         <div className="relative" onClick={() => setShowDetail(true)}>
           <img
@@ -136,14 +136,14 @@ export function MovieCard({
             className="w-full h-64 object-cover group-hover:scale-[1.02] transition-transform duration-300"
           />
           {movie.is_premium && (
-            <Badge className="absolute top-2 left-2 bg-secondary text-secondary-foreground font-pixel text-xs">
-              PREMIUM
+            <Badge className="absolute top-2 left-2 pixel-badge animate-pixel-pulse">
+              ⭐ PREMIUM
             </Badge>
           )}
           {movie.imdb_rating && (
-            <div className="absolute top-2 right-2 flex items-center gap-1 bg-black/70 px-2 py-1 rounded">
+            <div className="absolute top-2 right-2 flex items-center gap-1 bg-primary/90 px-2 py-1 shadow-pixel font-pixel text-[10px]">
               <Star className="w-3 h-3 fill-accent text-accent" />
-              <span className="text-white text-xs font-medium">{movie.imdb_rating}</span>
+              <span className="text-primary-foreground">{movie.imdb_rating}</span>
             </div>
           )}
         </div>
@@ -186,7 +186,7 @@ export function MovieCard({
                 e.stopPropagation();
                 setShowTrailer(true);
               }}
-              className="flex-1 font-pixel text-xs border border-primary/30 hover:border-primary/50 hover:bg-primary/5 transition-[var(--transition-pixel)]"
+              className="flex-1 pixel-button hover:animate-glitch"
             >
               <Play className="w-3 h-3 mr-1" />
               TRAILER
@@ -199,7 +199,7 @@ export function MovieCard({
                 e.stopPropagation();
                 setShowDetail(true);
               }}
-              className="font-pixel text-xs hover:bg-accent/10 text-muted-foreground hover:text-accent transition-[var(--transition-pixel)]"
+              className="font-pixel text-xs hover:bg-accent/20 text-muted-foreground hover:text-accent transition-[var(--transition-pixel)] hover:shadow-glow"
             >
               <Info className="w-3 h-3" />
             </Button>
@@ -213,8 +213,8 @@ export function MovieCard({
                   handleWatchlistToggle();
                 }}
                 disabled={loading}
-                className={`font-pixel text-xs hover:bg-accent/10 transition-[var(--transition-pixel)] ${
-                  inWatchlist ? 'text-accent' : 'text-muted-foreground hover:text-accent'
+                className={`font-pixel text-xs hover:bg-accent/20 transition-[var(--transition-pixel)] hover:shadow-glow ${
+                  inWatchlist ? 'text-accent animate-pixel-pulse' : 'text-muted-foreground hover:text-accent'
                 }`}
               >
                 <Heart className={`w-3 h-3 ${inWatchlist ? 'fill-current' : ''}`} />
@@ -230,10 +230,10 @@ export function MovieCard({
                 handlePurchase();
               }}
               disabled={isPurchased}
-              className={`w-full font-pixel text-xs transition-[var(--transition-pixel)] ${
+              className={`w-full pixel-button ${
                 isPurchased
-                  ? 'bg-accent text-accent-foreground hover:bg-accent/90'
-                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                  ? 'bg-accent text-accent-foreground hover:bg-accent/90 animate-pixel-pulse'
+                  : 'bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-glow'
               }`}
             >
               {isPurchased ? (
